@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/output.css" />
+    <title>Multi-Step</title>
+  </head>
+  <body>
+    <div class="p-3 h-[80%] w-[60%] rounded-lg bg-white flex gap-10">
+      <div class="first-div flex rounded-md flex-col gap-4 p-5 pl-7">
+        <div class="flex gap-6">
+          <span
+            class="p-6 w-2 h-2 flex items-center justify-center bg-green-100 rounded-[50%] \"
+            >1</span
+          >
+          <div class="flex flex-col">
+            <span class="text-gray-200 font-medium">STEP 1</span>
+            <span class="font-bold text-white">YOUR INFO</span>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <span
+            class="p-6 w-2 h-2 flex items-center justify-center border-2 border-white text-white rounded-[50%]"
+            >2</span
+          >
+          <div class="flex flex-col">
+            <span class="text-gray-200 font-medium">STEP 2</span>
+            <span class="font-bold text-white">SELECT PLAN</span>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <span
+            class="p-6 w-2 h-2 border-2 flex items-center justify-center border-white text-white rounded-[50%]"
+            >3</span
+          >
+          <div class="flex flex-col">
+            <span class="text-gray-200 font-medium">STEP 3</span>
+            <span class="font-bold text-white">ADD-ONS</span>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <span
+            class="p-6 w-2 h-2 border-2 flex items-center justify-center border-white text-white rounded-[50%]"
+            >4</span
+          >
+          <div class="flex flex-col">
+            <span class="text-gray-200 font-medium">STEP 4</span>
+            <span class="font-bold text-white">SUMMARY</span>
+          </div>
+        </div>
+      </div>
+      <div id="step1" class="flex flex-col px-16 justify-center gap-24 w-[60%]">
+        <div class="flex flex-col p-2 pt-5">
+          <h1 class="text-indigo-700 font-bold text-5xl">Personal Info</h1>
+          <span class="text-gray-400 w-fit"
+            >Please provide your name, email address, and phone number.</span
+          >
+        </div>
+        <form class="flex flex-col gap-10" action="">
+          <div class="flex flex-col">
+            <label class="text-blue-800" for=""> Name </label>
+            <input
+              class="border-2 px-5 border-gray-300 p-4 rounded-b-md"
+              type="text"
+              placeholder="e.g Stephen King"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label class="text-blue-800" for=""> Email Address </label>
+            <input
+              class="border-2 px-5 border-gray-300 p-4 rounded-b-md"
+              type="text"
+              placeholder="e.g StephenKing@lorem.com"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label class="text-blue-800" for=""> Phone Number </label>
+            <input
+              class="border-2 px-5 border-gray-300 p-4 rounded-b-md"
+              type="text"
+              placeholder="e.g +91 7456858123"
+            />
+          </div>
+        </form>
+        <div class="flex justify-end">
+          <button
+            class="bg-blue-900 text-md text-white rounded-lg px-3 py-2 cursor-pointer nxt-btn"
+          >
+            Next Step
+          </button>
+        </div>
+      </div>
+      <div
+        id="step2"
+        class="hidden flex-col ml-10 px-16 justify-center gap-20 w-[55%]"
+      >
+        <div class="flex flex-col p-2 pt-5">
+          <h1 class="text-[#00295c] font-bold text-5xl">Select Your Plan</h1>
+          <span class="text-gray-400 w-fit"
+            >You have the option of monthly yearly billing.</span
+          >
+        </div>
+        <div>
+          <div class="cards flex justify-between items-center">
+            <div
+              class="border-2 border-purple-400 bg-gray-100 w-[200px] p-4 flex flex-col justify-between gap-16 rounded-lg"
+            >
+              <img src="./icon-arcade.svg" width="60px" alt="" />
+              <div class="flex flex-col">
+                <span class="text-blue-950">Arcade</span>
+                <span class="text-sm text-gray-500">$9/mo</span>
+              </div>
+            </div>
+            <div
+              class="border-2 border-gray-200 bg-white w-[200px] p-4 flex flex-col justify-between gap-16 rounded-lg"
+            >
+              <img src="./icon-advanced.svg" width="60px" alt="" />
+              <div class="flex flex-col">
+                <span class="text-blue-950">Advance</span>
+                <span class="text-sm text-gray-500">$12/mo</span>
+              </div>
+            </div>
+            <div
+              class="border-2 border-gray-200 bg-gwhite w-[200px] p-4 flex flex-col justify-between gap-16 rounded-lg"
+            >
+              <img src="./icon-pro.svg" width="60px" alt="" />
+              <div class="flex flex-col">
+                <span class="text-blue-950">Pro</span>
+                <span class="text-sm text-gray-500">$15/mo</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex text-[18px] items-center justify-center bg-gray-200 rounded-md gap-2 py-3.5 mt-7"
+          >
+            <span>Monthly</span>
+            <label class="relative inline-block w-12 h-7">
+              <input type="checkbox" class="peer opacity-0 w-0 h-0" />
+              <span
+                class="absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-[#00295c] rounded-full transition-colors duration-300 peer-checked:bg-[white]"
+              ></span>
+              <span
+                class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-transform duration-300 transform peer-checked:translate-x-5 peer-checked:bg-[#00295c]"
+              ></span>
+            </label>
+
+            <span>Yearly</span>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button class="text-gray-400 cursor-pointer prev-btn">Go Back</button>
+          <button
+            class="bg-blue-900 text-md text-white rounded-lg px-3 py-2 cursor-pointer nxt-btn"
+          >
+            Next Step
+          </button>
+        </div>
+      </div>
+      <div
+        id="step3"
+        class="hidden flex-col ml-10 px-16 justify-center gap-20 w-[55%]"
+      >
+        <div class="flex flex-col p-2 pt-5">
+          <h1 class="text-[#00295c] font-bold text-5xl">Pick Add-ons</h1>
+          <span class="text-gray-400 w-fit"
+            >Add-ons help improving your gaming experience.</span
+          >
+        </div>
+        <div class="flex flex-col gap-5">
+          <div
+            class="flex justify-between items-center border-2 border-[#e5e3e8] rounded-xl px-5 py-6"
+          >
+            <div class="flex gap-8">
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-5 w-5 accent-[#4538ff]"
+                />
+              </label>
+              <div class="flex flex-col">
+                <span class="text-[#00295c]">Online Service</span>
+                <span class="text-gray-400 text-[17px]"
+                  >Access to multiplayer games</span
+                >
+              </div>
+            </div>
+            <span class="text-[#7a78c4] text-[18px]">+$10/yr</span>
+          </div>
+          <div
+            class="flex justify-between items-center border-2 border-[#e5e3e8] rounded-xl px-5 py-6"
+          >
+            <div class="flex gap-8">
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-5 w-5 accent-[#4538ff]"
+                />
+              </label>
+              <div class="flex flex-col">
+                <span class="text-[#00295c]">Larger Storage</span>
+                <span class="text-gray-400 text-[17px]"
+                  >Extra 1TB of cloud save</span
+                >
+              </div>
+            </div>
+            <span class="text-[#7a78c4] text-[18px]">+$20/yr</span>
+          </div>
+          <div
+            class="flex justify-between items-center border-2 border-[#e5e3e8] rounded-xl px-5 py-6"
+          >
+            <div class="flex gap-8">
+              <label class="flex items-center">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-5 w-5 accent-[#4538ff]"
+                />
+              </label>
+              <div class="flex flex-col">
+                <span class="text-[#00295c]">Customizable Profile</span>
+                <span class="text-gray-400 text-[17px]"
+                  >Custom theme on your profile</span
+                >
+              </div>
+            </div>
+            <span class="text-[#7a78c4] text-[18px]">+$20/yr</span>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button class="text-gray-400 cursor-pointer prev-btn">Go Back</button>
+          <button
+            class="bg-blue-900 text-md text-white rounded-lg px-3 py-2 cursor-pointer nxt-btn"
+          >
+            Next Step
+          </button>
+        </div>
+      </div>
+      <div
+        id="step4"
+        class="hidden flex-col ml-10 px-16 justify-center gap-20 w-[55%]"
+      >
+        <div class="flex flex-col p-2 pt-5">
+          <h1 class="text-[#00295c] font-bold text-5xl">Finishing up</h1>
+          <span class="text-gray-400 w-fit"
+            >Double-check everything looks OK before confirming.</span
+          >
+        </div>
+        <div>
+          <div
+            class="flex flex-col p-7 gap-8 bg-[#fafbff] rounded-2xl text-[19px]"
+          >
+            <div class="flex justify-between items-center">
+              <div class="flex flex-col">
+                <span class="text-[#00295c] text-[21px]">Arcade(Yearly)</span>
+                <button class="underline w-fit">change</button>
+              </div>
+              <span class="text-[#00295c] font-bold text-[21px]">$90/yr</span>
+            </div>
+            <hr class="text-gray-400 w-[95%] m-auto" />
+            <div class="flex flex-col gap-6">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400">Online service</span
+                ><span class="text-[#00295c]">+$10/yr</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400">Larger storage</span
+                ><span class="text-[#00295c]">+$20/yr</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-between mt-8 w-[90%] m-auto">
+            <span class="text-[17px] text-gray-400">Total (per year)</span>
+            <span class="text-[#4e46e8] font-bold">$120/yr</span>
+          </div>
+        </div>
+
+        <div class="flex justify-between">
+          <button class="text-gray-400 cursor-pointer prev-btn">Go Back</button>
+          <button
+            class="bg-blue-900 text-md text-white rounded-lg px-3 py-2 cursor-pointer nxt-btn"
+          >
+            Next Step
+          </button>
+        </div>
+      </div>
+      <div
+        id="step5"
+        class="hidden flex-col ml-10 px-16 justify-center items-center gap-5 w-[55%]"
+      >
+        <img src="./icon-thank-you.svg" width="100px" alt="" />
+        <h1 class="text-[3rem] font-bold text-[#00295c]">Thank You!</h1>
+        <p class="text-gray-400 text-center">
+          Thanks for confirming your subscription! We hope you have fun using
+          our platform. If you ever need support, Please feel free to email us
+          at support@loremgaming.com
+        </p>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
