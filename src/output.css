@@ -322,9 +322,6 @@
   .gap-20 {
     gap: calc(var(--spacing) * 20);
   }
-  .gap-24 {
-    gap: calc(var(--spacing) * 24);
-  }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
   }
@@ -543,7 +540,6 @@ body {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  font-size: 1.2rem;
 }
 .first-div {
   background-image: url("/bg-sidebar-desktop.svg");
