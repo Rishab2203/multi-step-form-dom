@@ -1,6 +1,30 @@
 let nxt_btns = document.querySelectorAll(".nxt-btn");
 let prev_btns = document.querySelectorAll(".prev-btn");
 let formData = {};
+let monthly = true;
+const plans = {
+  arcade: { yearly: 90, monthly: 9 },
+  advance: { yearly: 120, monthly: 12 },
+  pro: { yearly: 150, monthly: 15 },
+};
+const addOns = [
+  {
+    id: "online-service",
+    serviceName: "Online Service",
+    price: { monthly: 1, yearly: 10 },
+  },
+  {
+    id: "larger-storage",
+    serviceName: "Larger Storage",
+    price: { monthly: 2, yearly: 20 },
+  },
+  {
+    id: "customizable-profile",
+    serviceName: "Customizable Profile",
+    price: { monthly: 2, yearly: 20 },
+  },
+];
+let addOnsSelected = [];
 
 let currentStep = 1;
 function nextStep() {
@@ -13,6 +37,7 @@ function nextStep() {
     nxtStage.classList.remove("hidden");
     nxtStage.classList.add("flex");
   }
+  console.log(formData);
 }
 
 function prevStep() {
@@ -69,5 +94,102 @@ function validateStep() {
       );
     }
   }
+
+  if (currentStep === 3) {
+    formData["addOn"] = [];
+    addOns.forEach((add) => {
+      if (addOnsSelected.includes(add.id)) {
+        formData["addOn"].push(add);
+      }
+    });
+  }
+
   return isValid;
 }
+
+/////////////Step-2 plan toggle//////////////////
+
+let planToggleBtn = document.querySelector(".plan-toggle-btn");
+
+planToggleBtn.addEventListener("change", () => {
+  monthly = !monthly;
+  const packageCards = document.querySelectorAll(".package-card");
+
+  packageCards.forEach((card) => {
+    let plan = card.firstElementChild.textContent.toLowerCase();
+
+    if (!monthly) {
+      card.innerHTML = ` <span class="text-blue-950">${card.firstElementChild.textContent}</span> 
+        <span  class=" text-sm text-gray-500"
+        >$${plans[plan]["yearly"]}/yr</span
+      >
+      <span  class="text-sm font-bold text-blue-950 yearly-plan"
+        >2 months free</span
+      >`;
+    } else {
+      packageCards.forEach((card) => {
+        let plan = card.firstElementChild.textContent.toLowerCase();
+        card.innerHTML = ` <span class="text-blue-950">${card.firstElementChild.textContent}</span>
+           <span class=" text-sm text-gray-500">$${plans[plan]["monthly"]}/mo</span>`;
+      });
+    }
+  });
+
+  ///////////////////changing the step-3 add-ons ////////////////////
+  const addOnServices = document.querySelectorAll(".add-on-service");
+
+  addOnServices.forEach((service, index) => {
+    if (!monthly) {
+      service.textContent = `$${addOns[index]["price"]["yearly"]}/yr`;
+    } else {
+      service.textContent = `$${addOns[index]["price"]["monthly"]}/mo`;
+    }
+  });
+});
+
+const cards = document.querySelectorAll(".card");
+
+cards.forEach((card) => {
+  card.addEventListener("click", () => {
+    // Remove "selected" class from all cards
+    cards.forEach((c) => {
+      c.classList.remove("border-purple-400");
+      c.classList.remove("bg-gray-100");
+    });
+
+    // Add "selected" class to clicked card
+    card.classList.add("border-purple-400");
+    card.classList.add("bg-gray-100");
+
+    let selectedPlan = card.querySelector("input").value;
+
+    formData.plan = selectedPlan;
+    formData.planCost = monthly
+      ? plans[selectedPlan]["monthly"]
+      : plans[selectedPlan]["yearly"];
+    formData.planType = monthly ? "monthly" : "yearly";
+    console.log(formData);
+
+    card.querySelector("input").checked = true;
+  });
+});
+
+// Select the first card by default
+// cards[0].classList.add("border-purple-400");
+// cards[0].classList.add("bg-gray-100");
+// cards[0].querySelector("input").checked = true;
+
+//////////////////step-3//////////////////////////////////////////////////////////////
+
+const addOnsInputs = document.querySelectorAll(".form-checkbox");
+console.log(addOnsInputs);
+addOnsInputs.forEach((input) =>
+  input.addEventListener("change", () => {
+    if (input.checked) {
+      addOnsSelected.push(input.value);
+    } else {
+      addOnsSelected = addOnsSelected.filter((addOn) => addOn != input.value);
+    }
+    console.log(addOnsSelected);
+  })
+);

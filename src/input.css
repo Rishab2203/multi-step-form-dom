@@ -16,3 +16,8 @@ body {
   background-size: contain;
   width: 30%;
 }
+
+.add-ons:has(input:checked) {
+  background-color: #fafbff;
+  border: 2px solid #7c79b8;
+}
