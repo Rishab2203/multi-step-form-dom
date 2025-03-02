@@ -102,6 +102,7 @@ function validateStep() {
         formData["addOn"].push(add);
       }
     });
+    finishingUpPage();
   }
 
   return isValid;
@@ -181,8 +182,10 @@ cards.forEach((card) => {
 
 //////////////////step-3//////////////////////////////////////////////////////////////
 
+///////////////Adding the selected add-ons in an array////////////
+
 const addOnsInputs = document.querySelectorAll(".form-checkbox");
-console.log(addOnsInputs);
+
 addOnsInputs.forEach((input) =>
   input.addEventListener("change", () => {
     if (input.checked) {
@@ -190,6 +193,41 @@ addOnsInputs.forEach((input) =>
     } else {
       addOnsSelected = addOnsSelected.filter((addOn) => addOn != input.value);
     }
-    console.log(addOnsSelected);
   })
 );
+
+//////////////////////////////step-4////////////////////////////////////
+
+function finishingUpPage() {
+  const packageNameAndType = document.querySelector("#package-name-and-type");
+  const packagePrice = document.querySelector("#package-price");
+  const addOnsBill = document.querySelector(".add-ons-bill");
+  const totalPrice = document.querySelector("#grand-total");
+  const totalSpan = document.querySelector("#total-span");
+  let total = formData.planCost;
+  packagePrice.textContent = monthly
+    ? `$${formData["planCost"]}/mo`
+    : `$${formData["planCost"]}/yr`;
+  packageNameAndType.textContent = monthly
+    ? `${formData["plan"]}(Monthly)`
+    : `${formData["plan"]}(Yearly)`;
+
+  formData["addOn"].forEach((addOn) => console.log(addOn["price"]["monthly"]));
+
+  formData["addOn"].forEach((addOn) => {
+    let div = document.createElement("div");
+    div.innerHTML = `        <div class="flex justify-between items-center">
+                  <span class="text-gray-400">${addOn["serviceName"]}</span
+                  ><span class="text-[#00295c]">+$${
+                    monthly
+                      ? addOn["price"]["monthly"]
+                      : addOn["price"]["yearly"]
+                  }/${monthly ? "mo" : "yr"}</span>
+                </div>`;
+    addOnsBill.appendChild(div);
+
+    total += monthly ? addOn["price"]["monthly"] : addOn["price"]["yearly"];
+  });
+  totalSpan.textContent = `Total ${monthly ? "(per month)" : "(per year)"}`;
+  totalPrice.textContent = `+$${total}/${monthly ? "mo" : "yr"}`;
+}

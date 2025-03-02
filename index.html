@@ -278,26 +278,29 @@
           >
             <div class="flex justify-between items-center">
               <div class="flex flex-col">
-                <span class="text-[#00295c] text-[21px]">Arcade(Yearly)</span>
-                <button class="underline w-fit">change</button>
+                <span
+                  id="package-name-and-type"
+                  class="text-[#00295c] text-[21px]"
+                  >Arcade(Yearly)</span
+                >
+                <button class="underline w-fit cursor-pointer">change</button>
               </div>
-              <span class="text-[#00295c] font-bold text-[21px]">$90/yr</span>
+              <span
+                id="package-price"
+                class="text-[#00295c] font-bold text-[21px]"
+                >$90/yr</span
+              >
             </div>
             <hr class="text-gray-400 w-[95%] m-auto" />
-            <div class="flex flex-col gap-6">
-              <div class="flex justify-between items-center">
-                <span class="text-gray-400">Online service</span
-                ><span class="text-[#00295c]">+$10/yr</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-gray-400">Larger storage</span
-                ><span class="text-[#00295c]">+$20/yr</span>
-              </div>
-            </div>
+            <div class="flex flex-col gap-6 add-ons-bill"></div>
           </div>
           <div class="flex justify-between mt-8 w-[90%] m-auto">
-            <span class="text-[17px] text-gray-400">Total (per year)</span>
-            <span class="text-[#4e46e8] font-bold">$120/yr</span>
+            <span id="total-span" class="text-[17px] text-gray-400"
+              >Total (per year)</span
+            >
+            <span id="grand-total" class="text-[#4e46e8] font-bold"
+              >$120/yr</span
+            >
           </div>
         </div>
 
