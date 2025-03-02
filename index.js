@@ -30,27 +30,35 @@ let currentStep = 1;
 function nextStep() {
   if (validateStep()) {
     let currStage = document.querySelector(`#step${currentStep}`);
+    let currtrack = document.querySelector(`#track-${currentStep}`);
     currStage.classList.remove("flex");
     currStage.classList.add("hidden");
+    currtrack.classList.remove("active-track");
     currentStep++;
     let nxtStage = document.querySelector(`#step${currentStep}`);
+    let nxtrack = document.querySelector(`#track-${currentStep}`);
     nxtStage.classList.remove("hidden");
     nxtStage.classList.add("flex");
+    nxtrack.classList.add("active-track");
   }
-  console.log(formData);
+  //   console.log(formData);
 }
 
 function prevStep() {
   let currStage = document.querySelector(`#step${currentStep}`);
+  let currtrack = document.querySelector(`#track-${currentStep}`);
   currStage.classList.remove("flex");
   currStage.classList.add("hidden");
+  currtrack.classList.remove("active-track");
   if (currentStep > 1) {
     currentStep--;
   }
 
   let prevStage = document.querySelector(`#step${currentStep}`);
+  let prevtrack = document.querySelector(`#track-${currentStep}`);
   prevStage.classList.remove("hidden");
   prevStage.classList.add("flex");
+  prevtrack.classList.add("active-track");
 }
 
 nxt_btns.forEach((nxt_btn) => nxt_btn.addEventListener("click", nextStep));
@@ -86,8 +94,8 @@ function validateStep() {
       formData.name = name.value.trim();
       formData.email = email.value.trim();
       formData.phone = phone.value.trim();
-      console.log(firstPageFormSpan);
-      console.log(formData);
+      //   console.log(firstPageFormSpan);
+      //   console.log(formData);
       firstPageFormSpan.forEach((span) => span.setAttribute("hidden", "true"));
       [name, email, phone].forEach((inpt) =>
         inpt.classList.remove("border-red-300")
@@ -169,7 +177,7 @@ cards.forEach((card) => {
       ? plans[selectedPlan]["monthly"]
       : plans[selectedPlan]["yearly"];
     formData.planType = monthly ? "monthly" : "yearly";
-    console.log(formData);
+    // console.log(formData);
 
     card.querySelector("input").checked = true;
   });
@@ -213,7 +221,7 @@ function finishingUpPage() {
     : `${formData["plan"]}(Yearly)`;
 
   formData["addOn"].forEach((addOn) => console.log(addOn["price"]["monthly"]));
-
+  addOnsBill.innerHTML = "";
   formData["addOn"].forEach((addOn) => {
     let div = document.createElement("div");
     div.innerHTML = `        <div class="flex justify-between items-center">
