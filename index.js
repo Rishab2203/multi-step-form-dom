@@ -106,7 +106,7 @@ function validateStep() {
 
   if (currentStep === 2) {
     if (!formData["plan"]) {
-      alert("select atleast one package");
+      alert("select one package two move ahead.");
       isValid = false;
     }
   }
@@ -225,7 +225,9 @@ function finishingUpPage() {
     ? `$${formData["planCost"]}/mo`
     : `$${formData["planCost"]}/yr`;
   packageNameAndType.textContent = monthly
-    ? `${formData["plan"]}(Monthly)`
+    ? `${
+        formData["plan"][0].toUpperCase() + formData["plan"].slice(1)
+      }(Monthly)`
     : `${formData["plan"]}(Yearly)`;
 
   formData["addOn"].forEach((addOn) => console.log(addOn["price"]["monthly"]));
