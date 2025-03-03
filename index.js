@@ -81,6 +81,7 @@ function validateStep() {
       name.classList.add("border-red-300");
       name.nextElementSibling.removeAttribute("hidden");
     }
+
     if (!emailRegex.test(email.value.trim())) {
       isValid = false;
       email.classList.add("border-red-300");
@@ -100,6 +101,13 @@ function validateStep() {
       [name, email, phone].forEach((inpt) =>
         inpt.classList.remove("border-red-300")
       );
+    }
+  }
+
+  if (currentStep === 2) {
+    if (!formData["plan"]) {
+      alert("select atleast one package");
+      isValid = false;
     }
   }
 
@@ -239,3 +247,21 @@ function finishingUpPage() {
   totalSpan.textContent = `Total ${monthly ? "(per month)" : "(per year)"}`;
   totalPrice.textContent = `+$${total}/${monthly ? "mo" : "yr"}`;
 }
+
+////////////////////////plan-change-btn///////////////////
+let planChange = document.querySelector("#plan-change-btn");
+
+planChange.addEventListener("click", () => {
+  let step2 = document.querySelector("#step2");
+  let step4 = document.querySelector("#step4");
+  let track2 = document.querySelector("#track-2");
+  let track4 = document.querySelector("#track-4");
+
+  step4.classList.remove("flex");
+  step4.classList.add("hidden");
+  step2.classList.remove("hidden");
+  step2.classList.add("flex");
+  track2.classList.add("active-track");
+  track4.classList.remove("active-track");
+  currentStep = 2;
+});
