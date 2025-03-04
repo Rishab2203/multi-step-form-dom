@@ -229,7 +229,9 @@ function finishingUpPage() {
     ? `${
         formData["plan"][0].toUpperCase() + formData["plan"].slice(1)
       }(Monthly)`
-    : `${formData["plan"]}(Yearly)`;
+    : `${
+        formData["plan"][0].toUpperCase() + formData["plan"].slice(1)
+      }(Yearly)`;
 
   formData["addOn"].forEach((addOn) => console.log(addOn["price"]["monthly"]));
   addOnsBill.innerHTML = "";
