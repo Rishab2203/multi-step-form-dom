@@ -152,6 +152,8 @@ planToggleBtn.addEventListener("change", () => {
     }
   });
 
+  //////////////////step-3//////////////////////////////////////////////////////////////
+
   ///////////////////changing the step-3 add-ons ////////////////////
   const addOnServices = document.querySelectorAll(".add-on-service");
 
@@ -196,8 +198,6 @@ cards.forEach((card) => {
 // cards[0].classList.add("bg-gray-100");
 // cards[0].querySelector("input").checked = true;
 
-//////////////////step-3//////////////////////////////////////////////////////////////
-
 ///////////////Adding the selected add-ons in an array////////////
 
 const addOnsInputs = document.querySelectorAll(".form-checkbox");
@@ -220,6 +220,7 @@ function finishingUpPage() {
   const addOnsBill = document.querySelector(".add-ons-bill");
   const totalPrice = document.querySelector("#grand-total");
   const totalSpan = document.querySelector("#total-span");
+  const hr = document.querySelector("#finishing-up-hr");
   let total = formData.planCost;
   packagePrice.textContent = monthly
     ? `$${formData["planCost"]}/mo`
@@ -246,6 +247,11 @@ function finishingUpPage() {
 
     total += monthly ? addOn["price"]["monthly"] : addOn["price"]["yearly"];
   });
+  if (formData["addOn"].length === 0) {
+    hr.setAttribute("hidden", "true");
+  } else {
+    hr.removeAttribute("hidden");
+  }
   totalSpan.textContent = `Total ${monthly ? "(per month)" : "(per year)"}`;
   totalPrice.textContent = `+$${total}/${monthly ? "mo" : "yr"}`;
 }
