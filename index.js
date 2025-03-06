@@ -106,7 +106,6 @@ function validateStep() {
 
   if (currentStep === 2) {
     if (!formData["plan"]) {
-      alert("select one package two move ahead.");
       isValid = false;
     }
   }
@@ -166,17 +165,18 @@ planToggleBtn.addEventListener("change", () => {
   });
 });
 
-const cards = document.querySelectorAll(".card");
+const card_cont = document.querySelector(".cards");
 
-cards.forEach((card) => {
-  card.addEventListener("click", () => {
-    // Remove "selected" class from all cards
-    cards.forEach((c) => {
-      c.classList.remove("border-purple-400");
-      c.classList.remove("bg-gray-100");
-    });
+card_cont.addEventListener("click", (e) => {
+  let cards = document.querySelectorAll(".card");
 
-    // Add "selected" class to clicked card
+  cards.forEach((c) => {
+    c.classList.remove("border-purple-400");
+    c.classList.remove("bg-gray-100");
+  });
+
+  if (e.target != e.currentTarget) {
+    let card = e.target.closest(".card");
     card.classList.add("border-purple-400");
     card.classList.add("bg-gray-100");
 
@@ -190,27 +190,24 @@ cards.forEach((card) => {
     // console.log(formData);
 
     card.querySelector("input").checked = true;
-  });
+  }
 });
-
-// Select the first card by default
-// cards[0].classList.add("border-purple-400");
-// cards[0].classList.add("bg-gray-100");
-// cards[0].querySelector("input").checked = true;
 
 ///////////////Adding the selected add-ons in an array////////////
 
-const addOnsInputs = document.querySelectorAll(".form-checkbox");
+const addOnsCont = document.querySelector(".add-ons-cont");
 
-addOnsInputs.forEach((input) =>
-  input.addEventListener("change", () => {
+addOnsCont.addEventListener("click", (e) => {
+  if (e.target != e.currentTarget) {
+    let ele = e.target.closest(".add-ons");
+    let input = ele.querySelector("input");
     if (input.checked) {
       addOnsSelected.push(input.value);
     } else {
       addOnsSelected = addOnsSelected.filter((addOn) => addOn != input.value);
     }
-  })
-);
+  }
+});
 
 //////////////////////////////step-4////////////////////////////////////
 
